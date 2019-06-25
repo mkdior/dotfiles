@@ -14,6 +14,7 @@ call plug#end()
 	syntax on
 	set encoding=utf-8
 	set number relativenumber
+	map <F6> :setlocal spell! spelllang=en_us<CR>
 " Enable autocompletion:
 	set wildmode=longest,list,full
 " Disable \n autocomment:
@@ -32,3 +33,10 @@ call plug#end()
 	
 " Display all matching files with tab:
 	set wildmenu
+" General QOL mappings:
+	inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+" Markdown QOL mappings:
+	autocmd FileType md inoremap ;i __<Space><++><Esc>F_i
+	autocmd FileType md inoremap ;I byedwi<Space>__<Space><++><Esc>F_Pi
+	autocmd FileType md inoremap ;b ****<Space><++><Esc>F*hi
+	autocmd FileType md inoremap ;B byedwi****<Space><++><Space>F*hPi
