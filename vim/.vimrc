@@ -6,6 +6,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
+Plug 'gglynne/vedict'
 call plug#end()
 
 
@@ -37,11 +38,17 @@ call plug#end()
 " General QOL mappings:
 "	inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
 " Markdown QOL mappings:
-	autocmd FileType md inoremap ;i __<Space><++><Esc>F_i
-	autocmd FileType md inoremap ;I byedwi<Space>__<Space><++><Esc>F_Pi
-	autocmd FileType md inoremap ;b ****<Space><++><Esc>F*hi
-	autocmd FileType md inoremap ;B byedwi****<Space><++><Space>F*hPi
+"	autocmd FileType md inoremap ;i __<Space><++><Esc>F_i
+"	autocmd FileType md inoremap ;I byedwi<Space>__<Space><++><Esc>F_Pi
+"	autocmd FileType md inoremap ;b ****<Space><++><Esc>F*hi
+"	autocmd FileType md inoremap ;B byedwi****<Space><++><Space>F*hPi
 " Ultisnips settings:
 	let g:UltiSnipsExpandTrigger = '<tab>'
 	let g:UltiSnipsJumpForwardTrigger = '<tab>'
 	let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+" VeDict settings:
+	nmap <c-l> :Vedict toggle<cr>
+	vmap <c-l> y:Vedict grep "<c-r>"" edict<cr>
+	vmap <c-s-l> y:Vedict grep ".*<c-r>"" edict<cr>
+	vmap <c-n> y:Vedict grep <c-r>" enamdict<cr>
+	vmap <c-s-n> y:Vedict grep ".*<c-r>"" enamdict<cr>
