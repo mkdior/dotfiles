@@ -7,6 +7,7 @@ Plug 'PotatoesMaster/i3-vim-syntax'
 Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
 Plug 'gglynne/vedict'
+Plug 'bobthecow/git-flow-completion'
 call plug#end()
 
 
@@ -17,6 +18,8 @@ call plug#end()
 	set encoding=utf-8
 	set number relativenumber
 	map <F6> :setlocal spell! spelllang=en_us<CR>
+	nnoremap <Leader>o o<Esc>
+    	nnoremap <Leader>O O<Esc>
 " Enable autocompletion:
 	set wildmode=longest,list,full
 " Disable \n autocomment:
@@ -52,3 +55,13 @@ call plug#end()
 	vmap <c-s-l> y:Vedict grep ".*<c-r>"" edict<cr>
 	vmap <c-n> y:Vedict grep <c-r>" enamdict<cr>
 	vmap <c-s-n> y:Vedict grep ".*<c-r>"" enamdict<cr>
+
+	map <up> <nop>
+	map <down> <nop>
+	map <left> <nop>
+	map <right> <nop>	
+	imap <up> <nop>
+	imap <down> <nop>
+	imap <left> <nop>
+	imap <right> <nop>
+
