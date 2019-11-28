@@ -8,7 +8,9 @@ Plug 'tpope/vim-surround'
 Plug 'SirVer/ultisnips'
 Plug 'gglynne/vedict'
 Plug 'bobthecow/git-flow-completion'
+Plug 'lervag/vimtex'
 call plug#end()
+
 
 
 " Basic config:
