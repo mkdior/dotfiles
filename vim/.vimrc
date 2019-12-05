@@ -9,6 +9,7 @@ Plug 'SirVer/ultisnips'
 Plug 'gglynne/vedict'
 Plug 'bobthecow/git-flow-completion'
 Plug 'lervag/vimtex'
+Plug 'vim-scripts/loremipsum'
 call plug#end()
 
 
@@ -66,4 +67,6 @@ call plug#end()
 	imap <down> <nop>
 	imap <left> <nop>
 	imap <right> <nop>
-
+" Mappings for compiling Latex file
+	autocmd FileType tex nmap <buffer> <C-p> :w<CR>:!xelatex %<CR><CR>
+	autocmd FileType tex nmap <buffer> <C-a> :!zathura %:r.pdf & disown
