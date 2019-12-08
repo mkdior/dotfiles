@@ -19,6 +19,7 @@ call plug#end()
 	filetype plugin on
 	syntax on
 	set encoding=utf-8
+	colorscheme delek
 	set number relativenumber
 	map <F6> :setlocal spell! spelllang=en_us<CR>
 	nnoremap <Leader>o o<Esc>
@@ -43,6 +44,9 @@ call plug#end()
 	set wildmenu
 " General QOL mappings:
 "	inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+	map <leader>o :setlocal spell! spelllang=en_us<CR>
+	map <leader>b :vsp<space>~/Documents/Notes/Bib/uni.bib<CR>
+	autocmd VimLeave *.tex !texclear %
 " Markdown QOL mappings:
 "	autocmd FileType md inoremap ;i __<Space><++><Esc>F_i
 "	autocmd FileType md inoremap ;I byedwi<Space>__<Space><++><Esc>F_Pi
