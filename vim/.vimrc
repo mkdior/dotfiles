@@ -1,68 +1,30 @@
-
 let mapleader =" "
 
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/goyo.vim'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'tpope/vim-surround'
-Plug 'SirVer/ultisnips'
-Plug 'gglynne/vedict'
-Plug 'bobthecow/git-flow-completion'
-Plug 'lervag/vimtex'
 Plug 'vim-scripts/loremipsum'
+Plug 'rust-lang/rust.vim'
 call plug#end()
-
-
 
 " Basic config:
 	set nocompatible
 	filetype plugin on
 	syntax on
-	set encoding=utf-8
-	colorscheme delek
 	set number relativenumber
-	map <F6> :setlocal spell! spelllang=en_us<CR>
-	nnoremap <Leader>o o<Esc>
-    	nnoremap <Leader>O O<Esc>
-" Enable autocompletion:
-	set wildmode=longest,list,full
-" Disable \n autocomment:
-	autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
-" Auto reload config:
-	augroup myvimrchooks
-	au!
-	autocmd bufwritepost .vimrc source ~/.vimrc
-	augroup END
+	map <leader>s :setlocal spell! spelllang=en_us<CR>
 " Goyo settings:
 	map <leader>g :Goyo <bar> highlight StatusLineNC ctermfg=white<CR>
-" Search down into subfolders:
-	set path+=**
-"	set wildignore+=**/folder_name/**
-" Surround settings:
-	
-" Display all matching files with tab:
-	set wildmenu
 " General QOL mappings:
-"	inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
+	map <leader><leader> <Esc>/<++><Enter>"_c4l
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
-	map <leader>b :vsp<space>~/Documents/Notes/Bib/uni.bib<CR>
-	autocmd VimLeave *.tex !texclear %
-" Markdown QOL mappings:
-"	autocmd FileType md inoremap ;i __<Space><++><Esc>F_i
-"	autocmd FileType md inoremap ;I byedwi<Space>__<Space><++><Esc>F_Pi
-"	autocmd FileType md inoremap ;b ****<Space><++><Esc>F*hi
-"	autocmd FileType md inoremap ;B byedwi****<Space><++><Space>F*hPi
-" Ultisnips settings:
-	let g:UltiSnipsExpandTrigger = '<tab>'
-	let g:UltiSnipsJumpForwardTrigger = '<tab>'
-	let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
-" VeDict settings:
-	nmap <c-l> :Vedict toggle<cr>
-	vmap <c-l> y:Vedict grep "<c-r>"" edict<cr>
-	vmap <c-s-l> y:Vedict grep ".*<c-r>"" edict<cr>
-	vmap <c-n> y:Vedict grep <c-r>" enamdict<cr>
-	vmap <c-s-n> y:Vedict grep ".*<c-r>"" enamdict<cr>
-
+	map <leader>b :sp<space>~/Documents/Notes/Bib/uni.bib<CR>
+	map <leader>v :sp<space>~/.vimrc<CR>
+  map <leader>a :sp<space>~/.config/aliasrc<CR>
+" LaTeX QOL mappings:
+"
+" Rust QOL mappings:
+"
+" Disable arrow keys:
 	map <up> <nop>
 	map <down> <nop>
 	map <left> <nop>
@@ -73,4 +35,52 @@ call plug#end()
 	imap <right> <nop>
 " Mappings for compiling Latex file
 	autocmd FileType tex nmap <buffer> <C-p> :w<CR>:!xelatex %<CR><CR>
-	autocmd FileType tex nmap <buffer> <C-a> :!zathura %:r.pdf & disown
+	autocmd FileType tex nmap <buffer> <C-a> :!zathura %:r.pdf & disown<CR><CR>
+" Tab settings for documents
+	" On pressing tab, insert 2 spaces
+	set expandtab
+	" show existing tab with 2 spaces width
+	set tabstop=2
+	set softtabstop=2
+	" when indenting with '>', use 2 spaces width
+	set shiftwidth=2
+
+" :Loremipsum[!] [WORDCOUNT] [PARAGRAPH_TEMPLATE] [PREFIX POSTFIX]
+" makeindex test.nlo -s nomencl.ist -o test.nls >> Building Nomenclature list
+  set wmh=0
+  nmap <silent> <A-w> :wincmd k<CR>
+  nmap <silent> <A-s> :wincmd j<CR>
+  nmap <silent> <A-a> :wincmd h<CR>
+  nmap <silent> <A-d> :wincmd l<CR>
+
+  nnoremap <A-j> :m .+1<CR>==
+  nnoremap <A-k> :m .-2<CR>==
+  inoremap <A-j> <Esc>:m .+1<CR>==gi
+  inoremap <A-k> <Esc>:m .-2<CR>==gi
+  vnoremap <A-j> :m '>+1<CR>gv=gv
+  vnoremap <A-k> :m '<-2<CR>gv=gv
+
+
+  " Cheat - Sheet :D
+  " :%s/foo/bar/gc  -> Substitute foo with bar / global and confirm
+  " Remove % to search and replace just the current line.
+
+  " Move .swp files to their own directory
+  :set dir=/Users/meuko/.config/swaps
+
+  " Set clipboard to +mode, which allows us to yank to systemCC
+  set clipboard =unnamedplus
+
+  " Change the color of the status bar on inactive window
+  highlight StatusLineNC cterm=bold ctermfg=black ctermbg=black
+
+  " Map split navigation to just CTRL h/j/k/l
+  nnoremap <C-J> <C-W><C-J>
+  nnoremap <C-K> <C-W><C-K>
+  nnoremap <C-L> <C-W><C-L>
+  nnoremap <C-H> <C-W><C-H> 
+
+  " Nerd Comments settings:
+  " Use compact syntax for prettified multi-line comments
+  let g:NERDCompactSexyComs = 1
+  filetype plugin on
