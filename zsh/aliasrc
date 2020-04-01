@@ -1,0 +1,12 @@
+alias 0x0='~/../../usr/local/bin/0x0.sh'
+alias pp='mpg123'
+alias ygg='ssh meuko@188.166.110.250'
+alias fontl='/Users/meuko/.local/share/fonts'
+alias xxx='pbcopy'
+alias fig='figlet -f univers.flf'
+alias xoxo='figlet -f univers.flf'
+alias qqq='youtube-dl -f bestaudio[ext=m4a] --embed-thumbnail --add-metadata'
+alias brewski='brew update && brew upgrade && brew cleanup; brew doctor'
+alias blocknote='cd /Users/meuko/Documents/Notes/Others/research'
+alias copy="tr -d '\n' | pbcopy"
+alias pbin="curl -F 'sprunge=<-' http://sprunge.us | copy"
