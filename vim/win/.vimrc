@@ -4,6 +4,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/goyo.vim'
 Plug 'vim-scripts/loremipsum'
 Plug 'rust-lang/rust.vim'
+Plug 'msanders/snipmate.vim'
 Plug 'wadackel/vim-dogrun'
 Plug 'andreasvc/vim-256noir'
 Plug 'owickstrom/vim-colors-paramount'
@@ -27,6 +28,13 @@ call plug#end()
 	map <leader><leader> <Esc>/<++><Enter>"_c4l
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
 	map <leader>v :sp<space>~/.vimrc<CR>
+" For fuzzy search
+  set path=.,,**
+" For switching tabs native = Ctrl-Pg[Dn/Up]
+" set switchbuf=usetab
+" nnoremap <F8> :sbnext<CR>
+" nnoremap <S-F8> :sbprevious<CR> 
+
 " LaTeX QOL mappings:
 " The compile command expects you to have a LaTeX folder in ../ for all the
 " generated files. If one doesn't exist, it creates one for you.
@@ -45,6 +53,13 @@ call plug#end()
 	imap <down> <nop>
 	imap <left> <nop>
 	imap <right> <nop>
+" Netrw settings
+  let g:netrw_banner = 0
+  let g:netrw_liststyle = 3
+  let g:netrw_browse_split = 4
+  let g:netrw_altv = 1
+  let g:netrw_winsize = 25
+  map <leader>e :Vexplore<CR>
 " Tab settings for documents
 	" On pressing tab, insert 2 spaces
 	set expandtab
