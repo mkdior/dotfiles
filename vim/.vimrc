@@ -4,13 +4,25 @@ call plug#begin('~/.vim/plugged')
 Plug 'junegunn/goyo.vim'
 Plug 'vim-scripts/loremipsum'
 Plug 'rust-lang/rust.vim'
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 call plug#end()
+
+set mmp=5000
+
+" Configuration trigger for Ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsUsePythonVersion = 3
+let g:UltiSnips#ExpandSnippet = 1
 
 " Basic config:
 	set nocompatible
 	filetype plugin on
 	syntax on
 	set number relativenumber
+  set backspace=indent,eol,start
 	map <leader>s :setlocal spell! spelllang=en_us<CR>
 " Goyo settings:
 	map <leader>g :Goyo <bar> highlight StatusLineNC ctermfg=white<CR>
@@ -21,7 +33,8 @@ call plug#end()
 	map <leader>v :sp<space>~/.vimrc<CR>
   map <leader>a :sp<space>~/.config/aliasrc<CR>
 " LaTeX QOL mappings:
-"
+	autocmd FileType tex nmap <buffer> <C-p> :w<CR>:!xelatex -output-directory=../LaTeX %<CR><CR>
+	autocmd FileType tex nmap <buffer> <C-a> :!zathura ../LaTeX/%:r.pdf & disown<CR><CR>
 " Rust QOL mappings:
 "
 " Disable arrow keys:
@@ -33,9 +46,6 @@ call plug#end()
 	imap <down> <nop>
 	imap <left> <nop>
 	imap <right> <nop>
-" Mappings for compiling Latex file
-	autocmd FileType tex nmap <buffer> <C-p> :w<CR>:!xelatex %<CR><CR>
-	autocmd FileType tex nmap <buffer> <C-a> :!zathura %:r.pdf & disown<CR><CR>
 " Tab settings for documents
 	" On pressing tab, insert 2 spaces
 	set expandtab
@@ -69,8 +79,9 @@ call plug#end()
   :set dir=/Users/meuko/.config/swaps
 
   " Set clipboard to +mode, which allows us to yank to systemCC
-  set clipboard =unnamedplus
+  set clipboard=unnamed
 
+  colorscheme blade_runner 
   " Change the color of the status bar on inactive window
   highlight StatusLineNC cterm=bold ctermfg=black ctermbg=black
 
@@ -83,4 +94,12 @@ call plug#end()
   " Nerd Comments settings:
   " Use compact syntax for prettified multi-line comments
   let g:NERDCompactSexyComs = 1
-  filetype plugin on
+
+  " Some cursor related stuff
+  "
+  highlight Cursor guifg=red guibg=red
+  highlight iCursor guifg=yellow guibg=yellow
+  set guicursor=n-v-c:block-Cursor
+  set guicursor+=i:ver100-iCursor
+  set guicursor+=n-v-c:blinkon0
+  set guicursor+=i:blinkwait10
