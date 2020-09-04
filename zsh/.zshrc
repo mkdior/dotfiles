@@ -1,6 +1,6 @@
 # Enable colors and change prompt:
 autoload -U colors && colors
-PS1="%B%{$fg[white]%}%{$fg[white]%}%n%{$fg[white]%}::%{$fg[green]%\対戦車砲 %{$fg[white]%}%~%{$fg[white]%}%{$reset_color%}$%b "
+PS1="%B%{$fg[white]%}%{$fg[white]%}%n%{$fg[white]%}::%{$fg[green]%}渡久地ハム %{$fg[white]%}%~%{$fg[white]%}%{$reset_color%}$%b "
 
 # History in cache directory:
 HISTSIZE=10000

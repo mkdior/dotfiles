@@ -5,6 +5,7 @@ Plug 'junegunn/goyo.vim'
 Plug 'vim-scripts/loremipsum'
 Plug 'rust-lang/rust.vim'
 Plug 'SirVer/ultisnips'
+Plug 'maksimr/vim-jsbeautify'
 Plug 'honza/vim-snippets'
 call plug#end()
 
@@ -17,21 +18,28 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsUsePythonVersion = 3
 let g:UltiSnips#ExpandSnippet = 1
 
+" Presentation settings
+nmap <leader>F :.!figlet -f isometric1.flf -w 200<CR>
+nmap <F5> :set relativenumber! number! showmode! showcmd! hidden! ruler!<CR>
+
 " Basic config:
 	set nocompatible
 	filetype plugin on
 	syntax on
 	set number relativenumber
-  set backspace=indent,eol,start
+        set backspace=indent,eol,start
 	map <leader>s :setlocal spell! spelllang=en_us<CR>
+	com! FormatJSON %!python -m json.tool
 " Goyo settings:
 	map <leader>g :Goyo <bar> highlight StatusLineNC ctermfg=white<CR>
 " General QOL mappings:
 	map <leader><leader> <Esc>/<++><Enter>"_c4l
 	map <leader>o :setlocal spell! spelllang=en_us<CR>
-	map <leader>b :sp<space>~/Documents/Notes/Bib/uni.bib<CR>
+	map <leader>b :sp<space>./../Bibs/Sources.bib<CR>
 	map <leader>v :sp<space>~/.vimrc<CR>
-  map <leader>a :sp<space>~/.config/aliasrc<CR>
+        map <leader>a :sp<space>~/.config/aliasrc<CR>
+        map <leader>[ :tabp<CR>
+        map <leader>] :tabn<CR>
 " LaTeX QOL mappings:
 	autocmd FileType tex nmap <buffer> <C-p> :w<CR>:!xelatex -output-directory=../LaTeX %<CR><CR>
 	autocmd FileType tex nmap <buffer> <C-a> :!zathura ../LaTeX/%:r.pdf & disown<CR><CR>
@@ -48,13 +56,9 @@ let g:UltiSnips#ExpandSnippet = 1
 	imap <right> <nop>
 " Tab settings for documents
 	" On pressing tab, insert 2 spaces
-	set expandtab
-	" show existing tab with 2 spaces width
-	set tabstop=2
-	set softtabstop=2
-	" when indenting with '>', use 2 spaces width
-	set shiftwidth=2
-
+	set noexpandtab
+	set tabstop=4
+  set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:␣
 " :Loremipsum[!] [WORDCOUNT] [PARAGRAPH_TEMPLATE] [PREFIX POSTFIX]
 " makeindex test.nlo -s nomencl.ist -o test.nls >> Building Nomenclature list
   set wmh=0
@@ -81,7 +85,7 @@ let g:UltiSnips#ExpandSnippet = 1
   " Set clipboard to +mode, which allows us to yank to systemCC
   set clipboard=unnamed
 
-  colorscheme blade_runner 
+  colorscheme deus_ex 
   " Change the color of the status bar on inactive window
   highlight StatusLineNC cterm=bold ctermfg=black ctermbg=black
 
